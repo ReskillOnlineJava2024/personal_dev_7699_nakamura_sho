@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>SNS</title>
+</head>
+<body>
+	<header th:replace="header"></header>
+	<hr>
+	<main>
+		<input type="text" name="keyword" placeholder="検索"><br>
+		<a href="/sns/post">新規作成</a><br>
+		<a th:each="post:${postList}">
+			
+			<textarea th:text="${post.message}"></textarea>
+			<a th:if="${post.userId}==${@account.id}" href="#">削除</a>
+		</a>
+	</main>
+	<p>aaa</p>
+</body>
+</html>
