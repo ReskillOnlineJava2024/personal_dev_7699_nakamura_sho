@@ -21,7 +21,12 @@ public class Post {
 	private String message;
 
 	public Post() {
-		
+		super();
+	}
+
+	public Post(Integer userId, String message) {
+		this.userId = userId;
+		this.message = message;
 	}
 
 	public Integer getId() {

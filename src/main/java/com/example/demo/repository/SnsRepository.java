@@ -11,4 +11,6 @@ public interface SnsRepository extends JpaRepository<Post, Integer> {
 
 	List<Post> findByMessageContaining(String message);
 
+	List<Post> findAllByOrderByIdDesc();
+
 }

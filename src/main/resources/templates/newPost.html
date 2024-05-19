@@ -2,20 +2,27 @@
 <html　xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <title>新規作成</title>
 </head>
 <body>
 	<header th:replace="header"></header>
 	
 	<main>
-		
-		<table border="1">
+		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
+		<form action="/sns/post" method="post">
+			<table border="1">
 			<tr>
 				<td>本文</td>
-				<th><textarea>naiyou</textarea></th>
+				<th><textarea name="message" id="entered-characters" oninput="limitTextLength();"></textarea></th>
 			</tr>
 		</table>
+		<p>残りの文字数：<span id="remaining-characters">140</span></p>
+		<input type="hidden" name="userId" th:value="${@account.id}">
 		<button>送信</button>
+		</form>
 	</main>
+	
+	<script th:src="@{/js/characterLimit.js}"></script>
 </body>
 </html>

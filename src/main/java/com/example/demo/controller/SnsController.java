@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Post;
@@ -28,9 +30,10 @@ public class SnsController {
 		if (keyword.length() > 0) {
 			postList = snsRepository.findByMessageContaining(keyword);
 		} else {
-			postList = snsRepository.findAll();
+			postList = snsRepository. findAllByOrderByIdDesc();
 		}
 		
+		model.addAttribute("keyword",keyword);
 		model.addAttribute("postList", postList);
 		return "sns";
 	}
@@ -42,8 +45,30 @@ public class SnsController {
 	}
 	
 	//新規登録処理
-//	@PostMapping("/sns/post")
-//	public String addPost() {
-//		
-//	}
+	@PostMapping("/sns/post")
+	public String addPost(
+			@RequestParam("userId") Integer userId,
+			@RequestParam("message") String message,
+			Model model) {
+		
+		if(message.length() >140) {
+			model.addAttribute("errorMessage", "140字以内で入力してください");
+			model.addAttribute("message", message);
+			return "newPost";
+		}
+		
+		Post post = new Post(userId, message);
+		
+		snsRepository.save(post);
+		
+		return "redirect:/sns";
+	}
+	
+	// 削除処理
+	@PostMapping("/sns/{id}/delete")
+	public String delete(@PathVariable("id") Integer id, Model model) {
+
+		snsRepository.deleteById(id);
+		return "redirect:/sns";
+	}
 }
