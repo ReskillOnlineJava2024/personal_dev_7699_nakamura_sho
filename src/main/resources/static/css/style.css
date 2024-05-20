@@ -70,8 +70,30 @@ button:hover {
 	background-color: #f1b2b2;
 }
 
+
+
 textarea{
     width: 95%;
     height: 100px;
+}
+
+/** ページリンクのレイアウト **/
+.paging {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 1rem;
+    list-style-type: none;
+}
+
+.paging li {
+    display: inline-block;
+}
+
+.paging.current, .paging a {
+    padding: 0 3px;
+}
+
+.paging a {
+    display: block;
 }
 

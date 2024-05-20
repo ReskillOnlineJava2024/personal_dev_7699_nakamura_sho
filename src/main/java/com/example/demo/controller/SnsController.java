@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,17 +25,21 @@ public class SnsController {
 	@GetMapping("/sns")
 	public String index(
 			@RequestParam(name = "keyword", defaultValue = "")String  keyword,
+			Pageable pageable,
 			Model model) {
 		
-		List<Post> postList = null;
+		Page<Post> pageList = null;
 		
 		if (keyword.length() > 0) {
-			postList = snsRepository.findByMessageContaining(keyword);
+			pageList = snsRepository.findByMessageContaining(keyword, pageable);
 		} else {
-			postList = snsRepository. findAllByOrderByIdDesc();
+			pageList = snsRepository. findAllByOrderByIdDesc(pageable);
 		}
 		
+		List<Post> postList = pageList.getContent();
+		
 		model.addAttribute("keyword",keyword);
+		model.addAttribute("pages", pageList);
 		model.addAttribute("postList", postList);
 		return "sns";
 	}

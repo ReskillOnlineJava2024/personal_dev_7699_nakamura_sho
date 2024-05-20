@@ -1,7 +1,7 @@
 package com.example.demo.repository;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.entity.Post;
@@ -9,8 +9,8 @@ import com.example.demo.entity.Post;
 
 public interface SnsRepository extends JpaRepository<Post, Integer> {
 
-	List<Post> findByMessageContaining(String message);
+	Page<Post> findByMessageContaining(String message, Pageable pageable);
 
-	List<Post> findAllByOrderByIdDesc();
+	Page<Post> findAllByOrderByIdDesc(Pageable pageable);
 
 }
