@@ -18,6 +18,13 @@
 		<a th:each="post:${postList}">
 			<table>
 				<tr>
+					<th>ID</th>
+					<th>ユーザーID</th>
+					<th>内容</th>
+				</tr>
+				<tr>
+					<td th:text="${post.id}"></td>
+					<td th:text="${post.userId}"></td>
 					<td>
 						<textarea th:text="${post.message}"></textarea>
 						<form th:if="${post.userId}==${@account.id}" th:action="@{/sns/{postId}/delete(postId=${post.id})}"  method="post" onSubmit="return check()">
