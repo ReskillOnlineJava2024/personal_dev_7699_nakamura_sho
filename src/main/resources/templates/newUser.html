@@ -7,20 +7,27 @@
 </head>
 <body>
 	<header>
-		<h2>ユーザー新規作成</h2>
+		<h1>サンプルSNS</h1>
 	</header>
 	
 	<main>
+		<h2>ユーザー新規作成</h2>
 		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
-		<form action="/users/add" method="post">
-			<input type="text" name="name" placeholder="ユーザー名" th:value="${name}"> <br>
-			<input type="text" name="email" placeholder="メールアドレス" th:value="${email}"> <br>
-			<input type="password" name="password" placeholder="パスワード"> <br>
-			<input type="password" name="password_confirm" placeholder="パスワード(確認)"> <br>
-			<button>新規作成</button>
+		<form action="/users/add" method="post" onsubmit="return validate()">
+			<input type="text" id="name" name="name" placeholder="ユーザー名" th:value="${name}"> <br>
+			<br>
+			<input type="email" id="email" name="email" placeholder="メールアドレス" th:value="${email}"> <br>
+			<br>
+			<input type="text" id="password" name="password" placeholder="パスワード(英数字8～16文字以内)"> <br>
+			<br>
+			<input type="text" name="password_confirm" placeholder="パスワード(確認)"> <br>
+			<br>
+			<button>新規登録</button>
 		</form>
+		<br>
 		<a href="/login">ログインへ</a>
 	</main>
-	
-	</body>
+	<script th:src="@{/js/accountCheck.js}"></script>
+</body>
+
 </html>

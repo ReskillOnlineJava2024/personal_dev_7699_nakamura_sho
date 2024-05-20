@@ -42,7 +42,7 @@ public class UserController {
 			@RequestParam("password") String password,
 			Model model) {
 		
-		if(email.length() == 0 || password.length() == 0) {
+		if(email.length() == 0 || password.length() == 0 || password  == null || password == null) {
 			model.addAttribute("errorMessage","メールアドレスまたはパスワードが未入力です");
 			return "login";
 		}
@@ -75,13 +75,6 @@ public class UserController {
 			@RequestParam("password") String password,
 			@RequestParam("password_confirm") String passwordConfilm, 
 			Model model) {
-		
-		if (name.length() == 0 || email.length() == 0 || password.length() == 0 || passwordConfilm.length() == 0) {
-			model.addAttribute("errorMessage","未入力の項目があります");
-			model.addAttribute("name", name);
-			model.addAttribute("email", email);
-			return "newUser";
-		}
 		
 		if (!(password.equals(passwordConfilm))) {
 			model.addAttribute("errorMessage","パスワードと確認用パスワードが一致しませんでした");

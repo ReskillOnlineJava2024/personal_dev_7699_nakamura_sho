@@ -72,7 +72,8 @@ public class SnsController {
 	
 	// 削除処理
 	@PostMapping("/sns/{id}/delete")
-	public String delete(@PathVariable("id") Integer id, Model model) {
+	public String delete(@PathVariable("id") Integer id, 
+			Model model) {
 
 		snsRepository.deleteById(id);
 		return "redirect:/sns";

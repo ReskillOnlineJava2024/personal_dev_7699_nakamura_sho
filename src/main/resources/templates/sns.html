@@ -8,27 +8,26 @@
 <body>
 	<header th:replace="header"></header>
 	<hr>
-	<main>
+	<nav>
 		<form action="/sns" method="get">
 			<input type="text" name="keyword" placeholder="検索" th:value="${keyword}">
 			<button>検索</button>
 		</form>
-		
+	</nav>
+	<main>
 		<a href="/sns/post">新規作成</a><br>
 		<a th:each="post:${postList}">
 			<table>
 				<tr>
-					<th>ID</th>
-					<th>ユーザーID</th>
+					<th>投稿順</th>
 					<th>内容</th>
 				</tr>
 				<tr>
 					<td th:text="${post.id}"></td>
-					<td th:text="${post.userId}"></td>
 					<td>
 						<textarea th:text="${post.message}"></textarea>
 						<form th:if="${post.userId}==${@account.id}" th:action="@{/sns/{postId}/delete(postId=${post.id})}"  method="post" onSubmit="return check()">
-					  		<input type="submit" value="削除" />
+					  		<input class="deleteButton" type="submit" value="削除" />
 						</form>
 					</td>
 				</tr>

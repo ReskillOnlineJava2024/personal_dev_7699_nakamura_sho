@@ -5,9 +5,9 @@ body {
     min-width: 900px; /* 最小幅 */
 }
 
-/* ヘッダー、ナビゲーションメニュー、フッター */
-header, nav, footer {
-	background-color: #45496a; /* 背景色 */
+/* ヘッダー、ナビゲーションメニュー */
+header, nav {
+	background-color: rgb(87, 87, 87); /* 背景色 */
 	color: #ffffff; /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
@@ -24,10 +24,6 @@ header h1 {
 	margin: 10px auto; 
 }
 
-/* 仕切り線 */
-hr {
-	border-top: 2px dashed #7d8bae;
-}
 
 /* メイン */
 main {
@@ -39,7 +35,7 @@ main {
 /* 表線 */
 table, th, td {
 	border-collapse: collapse;
-	border: 1px solid #7d8bae;
+	border: 1px solid rgb(87, 87, 87);
 }
 
 /* 表 */
@@ -50,7 +46,7 @@ table {
 
 /* 表見出しセル */
 table th {
-	background: #7d8bae;
+	background: rgb(87, 87, 87);
 	color: #ffffff;
 }
 
@@ -58,20 +54,21 @@ table th {
 button {
 	margin: 2px;
 	padding: 5px 20px;
-	background-color: #e5857b;
+	background-color: rgb(87, 87, 87);
 	color: #ffffff;
-	border: none;
+/*	border: none;*/
 	width:150px;
 	cursor: pointer;
+	border: 1px solid rgb(192, 192, 192);
 }
 
 /* 送信ボタン(マウスオーバー時) */
 button:hover {
-	background-color: #f1b2b2;
+	background-color: rgb(144, 144, 144);
 }
 
 
-
+/*　テキストエリアの大きさ */
 textarea{
     width: 95%;
     height: 100px;
@@ -95,5 +92,23 @@ textarea{
 
 .paging a {
     display: block;
+}
+
+/* 入力欄の大きさ */
+input {
+	width: 50%;
+	height: 30px;
+	
+}
+/* 線の上下左右の空白 */
+hr{
+	margin: 0%;
+	padding: 0%;
+}
+
+/* 検索バーの位置の設定 */
+nav {
+	text-align: left;
+	padding-left: 10px;
 }
 
