@@ -78,6 +78,44 @@ button:hover {
 	background-color: rgb(144, 144, 144);
 }
 
+/*削除ボタン（gomibako）*/
+.icon {
+	float: right;
+    top: 0.1em;
+    left: 0.1em;
+    width: 30px; /* アイコンのサイズに合わせて調整 */
+    height: 30px; /* アイコンのサイズに合わせて調整 */
+    background-image: url('/img/trash.png'); /* アイコンの画像パス */
+    background-size: contain;
+    cursor: pointer; /* カーソルをポインターに変更 */
+    border:none
+}
+
+/*ボタン（リンク）*/
+.btn {
+	font-size: 14px;
+	border: 1px solid #666;
+	text-align: center;
+	max-width: 200px;
+	margin: 20px auto;
+	font-family: 'Noto Serif JP', serif;
+}
+.btn a {
+	color: #666;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.btn2 {
+	background: #666;
+}
+.btn2 a {
+	color: white;
+}
+
 
 /*　sns.htmlのテキストエリアの大きさ */
 .sns{
@@ -135,15 +173,22 @@ input {
 	height: 30px;
 }
 
-/* 削除ボタンの大きさ */
-.deleteButton{
-	width: 25%;
-	height: 30px;
+/* 削除ボタンのスタイル */
+.deleteButton {
+    width: 10%;
+    height: 30px;
+    float: right;
 }
+
 /* 線の上下左右の空白 */
 hr{
 	margin: 0%;
 	padding: 0%;
+}
+
+/* 文字数制限(0になったら赤になる) */
+#remaining-characters.max {
+  color: #dd3535;
 }
 
 
