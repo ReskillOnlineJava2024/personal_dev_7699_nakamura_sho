@@ -2,20 +2,29 @@
 body {
 	background-color: #EFF0F7; /* 背景色  */
 	text-align: center; /* 中央寄せ */
-    min-width: 900px; /* 最小幅 */
 }
 
 /* ヘッダー、ナビゲーションメニュー */
 header, nav {
+	text-align: left;
 	background-color: rgb(87, 87, 87); /* 背景色 */
 	color: #ffffff; /* 文字色 */
 	padding-top: 5px; /* 内側余白(上) */
 	padding-bottom: 5px; /* 内側余白(下) */
+	padding-left: 20px;
 }
+
+.sessionAndLogout{
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
 
 /* ヘッダー、ナビゲーション内リンク */
 header a, nav a {
 	color: #ffffff;
+	text-decoration: none;
 }
 
 /* ヘッダー内見出し */
@@ -27,9 +36,10 @@ header h1 {
 
 /* メイン */
 main {
-	background-color: #FFFFFF;
+	background-color: rgb(192, 192, 192);
 	min-height: 50px;
 	padding: 20px;
+	min-height: 100vh; /* 画面の高さいっぱいに表示 */
 }
 
 /* 表線 */
@@ -42,6 +52,7 @@ table, th, td {
 table {
     margin: 5px auto;
     min-width: 800px;
+    background-color: rgb(255, 255, 255);
 }
 
 /* 表見出しセル */
@@ -68,10 +79,27 @@ button:hover {
 }
 
 
-/*　テキストエリアの大きさ */
-textarea{
+/*　sns.htmlのテキストエリアの大きさ */
+.sns{
     width: 95%;
     height: 100px;
+    /* 枠線を消す */
+    border: none;
+    /* 右下の//(サイズ変更機能)を消す */
+    resize: none;
+    font-size: 15px;
+    pointer-events: none;
+}
+
+/* textareaの大きさなど */
+textarea{
+	width: 95%;
+    height: 100px;
+    /* 枠線を消す */
+    border: none;
+    /* 右下の//(サイズ変更機能)を消す */
+    resize: none;
+    font-size: 15px;
 }
 
 /** ページリンクのレイアウト **/
@@ -100,15 +128,22 @@ input {
 	height: 30px;
 	
 }
+
+/*検索欄の大きさ*/
+.search{
+	width: 20%;
+	height: 30px;
+}
+
+/* 削除ボタンの大きさ */
+.deleteButton{
+	width: 25%;
+	height: 30px;
+}
 /* 線の上下左右の空白 */
 hr{
 	margin: 0%;
 	padding: 0%;
 }
 
-/* 検索バーの位置の設定 */
-nav {
-	text-align: left;
-	padding-left: 10px;
-}
 

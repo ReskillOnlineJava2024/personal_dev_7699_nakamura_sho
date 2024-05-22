@@ -1,4 +1,4 @@
-function accountValidate() {
+function updateValidate() {
     var password = document.getElementById("password").value;
     var passwordConfirm = document.getElementById("passwordConfirm").value;
     var name = document.getElementById("name").value;
@@ -21,6 +21,10 @@ function accountValidate() {
 		 return false;
 	}
 	
-	return true;	
 	
+	if (window.confirm('情報の更新後ログアウトします。更新しますか？')) {
+        return true;
+    } else {
+        return false;
+    }
 }

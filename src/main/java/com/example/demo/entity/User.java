@@ -18,11 +18,16 @@ public class User {
 	private String email; // メールアドレス
 
 	private String password; // メールアドレス
-	
-	
 
 	public User() {
-	
+
+	}
+
+	public User(Integer id, String name, String email, String password) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
 	}
 	
 	public User(String name, String email, String password) {

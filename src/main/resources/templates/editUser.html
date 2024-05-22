@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>アカウント更新</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<header th:replace="header"></header>
+	
+	<main>
+		<h2>アカウント情報の変更</h2>
+		<a th:href="'/user/' + ${@account.id} + '/userInfo'">戻る</a>
+		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
+		<form th:action="@{/user/{userId}/edit(userId=${user.id})}" method="post" onsubmit="return updateValidate()">
+			<a th:each="user:${user}">
+				<input type="text" id="name" name="name" placeholder="新しいユーザー名" th:value="${user.name}"> <br>
+				<br>
+				<input type="email" id="email" name="email" placeholder="新しいメールアドレス" th:value="${user.email}"> <br>
+				<br>
+				<input type="text" id="password" name="password" placeholder="新しいパスワード(英数字8～16文字以内)"> <br>
+				<br>
+				<input type="text" id="passwordConfirm" name="password_confirm" placeholder="新しいパスワード(確認)"> <br>
+				<br>
+			</a>
+			<button>変更</button>
+		</form>
+		<br>
+	</main>
+	<script th:src="@{/js/updateCheck.js}"></script>
+</body>
+</html>

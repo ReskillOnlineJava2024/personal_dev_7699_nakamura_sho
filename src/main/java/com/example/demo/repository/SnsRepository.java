@@ -9,8 +9,10 @@ import com.example.demo.entity.Post;
 
 public interface SnsRepository extends JpaRepository<Post, Integer> {
 
-	Page<Post> findByMessageContaining(String message, Pageable pageable);
+	Page<Post> findByMessageContainingOrderByIdDesc(String message, Pageable pageable);
 
 	Page<Post> findAllByOrderByIdDesc(Pageable pageable);
+	
+	Page<Post> findByUserIdOrderByIdDesc(Integer id, Pageable pageable);
 
 }

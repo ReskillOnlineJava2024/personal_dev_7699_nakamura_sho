@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html　xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>アカウント情報</title>
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+	<header th:replace="header"></header>
+	
+	<main>
+		<h2>アカウント情報</h2>
+	
+		<table th:each="user:${user}">
+			<tr>
+				<th>アカウント名</th>
+				<td th:text="${user.name}"></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td th:text="${user.email}"></td>
+			</tr>
+				
+		</table>
+		<br>
+		<a th:href="'/sns/' + ${@account.id} + '/myPostList'">自身の投稿一覧</a>
+		<a th:href="'/user/' + ${@account.id} + '/edit'">アカウント情報の変更</a><br>
+	</main>
+</body>
+</html>

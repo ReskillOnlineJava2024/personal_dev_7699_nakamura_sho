@@ -1,5 +1,7 @@
 <header>
 	<h1><a href="/sns">サンプルSNS</a></h1>
-	<span th:text="'こんにちは、'+${@account.name}+'さん'"></span>
-	<a href="/logout">ログアウト</a>
+	<div class="sessionAndLogout">
+		<span th:text="'こんにちは、'+${@account.name}+'さん'"></span><br>
+		<a href="/logout">ログアウト</a>
+	</div>
 </header>

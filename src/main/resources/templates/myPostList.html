@@ -2,14 +2,16 @@
 <html　xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<title>過去の投稿一覧</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<title>SNS</title>
 </head>
 <body>
 	<header th:replace="header"></header>
 	<hr>
 	<nav th:replace="nav"></nav>
 	<main>
+		<h2>過去の投稿一覧</h2>
+		<a th:href="'/user/' + ${@account.id} + '/userInfo'">戻る</a>
 		<a th:each="post:${postList}">
 			<table>
 				<tr>

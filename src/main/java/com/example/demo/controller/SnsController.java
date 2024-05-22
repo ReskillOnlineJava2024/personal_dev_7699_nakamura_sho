@@ -31,7 +31,7 @@ public class SnsController {
 		Page<Post> pageList = null;
 		
 		if (keyword.length() > 0) {
-			pageList = snsRepository.findByMessageContaining(keyword, pageable);
+			pageList = snsRepository.findByMessageContainingOrderByIdDesc(keyword, pageable);
 		} else {
 			pageList = snsRepository. findAllByOrderByIdDesc(pageable);
 		}
@@ -77,5 +77,29 @@ public class SnsController {
 
 		snsRepository.deleteById(id);
 		return "redirect:/sns";
+	}
+	
+	//自身が投降したものの一覧画面表示
+	@GetMapping("/sns/{id}/myPostList")
+	public String myIndex(
+			@PathVariable("id") Integer id, 
+			@RequestParam(name = "keyword", defaultValue = "")String  keyword,
+			Pageable pageable,
+			Model model) {
+		
+		Page<Post> pageList = null;
+		
+		if (keyword.length() > 0) {
+			pageList = snsRepository.findByMessageContainingOrderByIdDesc(keyword, pageable);
+		} else {
+			pageList = snsRepository. findByUserIdOrderByIdDesc(id, pageable);
+		}
+		
+		List<Post> postList = pageList.getContent();
+		
+		model.addAttribute("keyword",keyword);
+		model.addAttribute("pages", pageList);
+		model.addAttribute("postList", postList);
+		return "myPostList";
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -41,11 +42,6 @@ public class UserController {
 			@RequestParam("email") String email,
 			@RequestParam("password") String password,
 			Model model) {
-		
-		if(email.length() == 0 || password.length() == 0 || password  == null || password == null) {
-			model.addAttribute("errorMessage","メールアドレスまたはパスワードが未入力です");
-			return "login";
-		}
 
 		List<User> userList = userRepository.findByEmailAndPassword(email, password);
 		if (userList == null || userList.size() == 0) {
@@ -73,20 +69,49 @@ public class UserController {
 			@RequestParam(name = "name", defaultValue = "") String name,
 			@RequestParam(name = "email", defaultValue = "") String email,
 			@RequestParam("password") String password,
-			@RequestParam("password_confirm") String passwordConfilm, 
 			Model model) {
-		
-		if (!(password.equals(passwordConfilm))) {
-			model.addAttribute("errorMessage","パスワードと確認用パスワードが一致しませんでした");
-			model.addAttribute("name", name);
-			model.addAttribute("email", email);
-			return "newUser";
-		}
 		
 		User user = new User(name, email, password);
 		
 		userRepository.save(user);
 		
 		return "redirect:/login";
+	}
+	
+	//アカウント情報画面表示
+	@GetMapping("user/{id}/userInfo")
+	public String userIndex(
+			@PathVariable("id") Integer id, Model model) {
+		
+		User user = userRepository.findById(id).get();
+		model.addAttribute("user", user);
+		
+		return "userInfo";
+	}
+	
+	//アカウント情報編集画面表示
+	@GetMapping("/user/{id}/edit")
+	public String editUser(
+			@PathVariable("id") Integer id, Model model) {
+		
+		User user = userRepository.findById(id).get();
+		model.addAttribute("user", user);
+		
+		return "editUser";
+	}
+	
+	// 更新処理
+	@PostMapping("/user/{id}/edit")
+	public String update(
+			@PathVariable("id") Integer id,
+			@RequestParam(value = "name", defaultValue = "") String name,
+			@RequestParam(value = "email", defaultValue = "") String email,
+			@RequestParam("password") String password,
+			Model model) {
+		
+
+		User user = new User(id, name, email, password);
+		userRepository.save(user);
+		return "redirect:/logout";
 	}
 }

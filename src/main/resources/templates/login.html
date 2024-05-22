@@ -13,16 +13,16 @@
 	<main>
 		<h2>ログイン</h2>
 		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
-		<form action="/login" method="post">
-			<input type="email" name="email" placeholder="メールアドレス"> <br>
+		<form action="/login" method="post" onSubmit="return validate()">
+			<input type="email" id="email" name="email" placeholder="メールアドレス"> <br>
 			<br>
-		    <input type="text" name="password" placeholder="パスワード"> <br>
+		    <input type="text" id="password" name="password" placeholder="パスワード"> <br>
 		    <br>
 		<button>ログイン</button>
 		</form>
 		<br>
 		<a href="/user/new">ユーザー新規作成</a>
 	</main>
+	<script th:src="@{/js/loginCheck.js}"></script>
 </body>
-<script></script>
 </html>
