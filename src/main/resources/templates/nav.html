@@ -1,8 +1,0 @@
-<nav>
-	<form action="/sns" method="get">
-		<input type="text" class="search" name="keyword" placeholder="検索" th:value="${keyword}">
-		<button>検索</button>
-	</form>
-	<a href="/sns/post">新規作成</a>
-	<a th:href="'/user/' + ${@account.id} + '/userInfo'">アカウント情報</a>
-</nav>

@@ -8,7 +8,14 @@
 <body>
 	<header th:replace="header"></header>
 	<hr>
-	<nav th:replace="nav"></nav>
+	<nav>
+		<form action="/sns" method="get">
+			<input type="text" class="search" name="keyword" placeholder="検索" th:value="${keyword}">
+			<button>検索</button>
+		</form>
+		<a href="/sns/post">新規作成</a>
+		<a th:href="'/user/' + ${@account.id} + '/userInfo'">アカウント情報</a>
+	</nav>
 	<main>
 		<a th:each="post:${postList}">
 			<table>
@@ -22,10 +29,8 @@
 				</tr>
 			</table>
 			<br>
-		</a>
-		
+		</a>		
 		<a th:replace="page"></a>
-
 	</main>
 	
 	<script th:src="@{/js/deleteConfirm.js}"></script>

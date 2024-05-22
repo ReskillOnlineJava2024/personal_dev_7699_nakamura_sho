@@ -14,6 +14,11 @@ public class Account {
 	public Account() {
 	}
 
+	public Account(String name, Integer id) {
+		this.name = name;
+		this.id = id;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -29,7 +34,6 @@ public class Account {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 
 	

@@ -13,10 +13,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entity.Post;
+import com.example.demo.model.Account;
 import com.example.demo.repository.SnsRepository;
 
 @Controller
 public class SnsController {
+	
+	@Autowired
+	Account account;;
 	
 	@Autowired
 	SnsRepository snsRepository;
@@ -90,7 +94,7 @@ public class SnsController {
 		Page<Post> pageList = null;
 		
 		if (keyword.length() > 0) {
-			pageList = snsRepository.findByMessageContainingOrderByIdDesc(keyword, pageable);
+			 pageList = snsRepository.findByUserIdAndMessageContainingOrderByIdDesc(id, keyword, pageable);
 		} else {
 			pageList = snsRepository. findByUserIdOrderByIdDesc(id, pageable);
 		}

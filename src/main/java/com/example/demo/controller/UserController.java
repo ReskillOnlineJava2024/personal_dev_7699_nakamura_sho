@@ -91,7 +91,7 @@ public class UserController {
 	
 	//アカウント情報編集画面表示
 	@GetMapping("/user/{id}/edit")
-	public String editUser(
+	public String userEdit(
 			@PathVariable("id") Integer id, Model model) {
 		
 		User user = userRepository.findById(id).get();
@@ -102,14 +102,13 @@ public class UserController {
 	
 	// 更新処理
 	@PostMapping("/user/{id}/edit")
-	public String update(
+	public String userUpdate(
 			@PathVariable("id") Integer id,
 			@RequestParam(value = "name", defaultValue = "") String name,
 			@RequestParam(value = "email", defaultValue = "") String email,
 			@RequestParam("password") String password,
 			Model model) {
 		
-
 		User user = new User(id, name, email, password);
 		userRepository.save(user);
 		return "redirect:/logout";

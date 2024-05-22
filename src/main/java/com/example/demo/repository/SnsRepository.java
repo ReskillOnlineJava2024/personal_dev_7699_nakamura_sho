@@ -13,6 +13,8 @@ public interface SnsRepository extends JpaRepository<Post, Integer> {
 
 	Page<Post> findAllByOrderByIdDesc(Pageable pageable);
 	
-	Page<Post> findByUserIdOrderByIdDesc(Integer id, Pageable pageable);
+	Page<Post> findByUserIdOrderByIdDesc(Integer Id, Pageable pageable);
+
+	Page<Post> findByUserIdAndMessageContainingOrderByIdDesc(Integer id, String message, Pageable pageable);
 
 }
