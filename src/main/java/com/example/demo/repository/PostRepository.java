@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.example.demo.entity.Post;
 
 
-public interface SnsRepository extends JpaRepository<Post, Integer> {
+public interface PostRepository extends JpaRepository<Post, Integer> {
 
 	Page<Post> findByMessageContainingOrderByIdDesc(String message, Pageable pageable);
 

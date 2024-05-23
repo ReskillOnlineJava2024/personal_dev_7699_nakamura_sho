@@ -12,18 +12,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entity.ExtendedPost;
 import com.example.demo.entity.Post;
 import com.example.demo.model.Account;
-import com.example.demo.repository.SnsRepository;
+import com.example.demo.repository.ExtendedPostRepository;
+import com.example.demo.repository.PostRepository;
 
 @Controller
-public class SnsController {
+public class PostController {
 	
 	@Autowired
-	Account account;;
+	Account account;
 	
 	@Autowired
-	SnsRepository snsRepository;
+	PostRepository postRepository;
+	
+	@Autowired
+	ExtendedPostRepository extendedPostRepository;
 	
 	//メッセージ一覧（ホーム）画面表示
 	@GetMapping("/sns")
@@ -32,15 +37,15 @@ public class SnsController {
 			Pageable pageable,
 			Model model) {
 		
-		Page<Post> pageList = null;
+		Page<ExtendedPost> pageList = null;
 		
 		if (keyword.length() > 0) {
-			pageList = snsRepository.findByMessageContainingOrderByIdDesc(keyword, pageable);
+			pageList = extendedPostRepository.  findExtendedPostDataByMessageContainingOrderByIdDesc(keyword, pageable);
 		} else {
-			pageList = snsRepository. findAllByOrderByIdDesc(pageable);
+			pageList = extendedPostRepository. findByExtendedPostDataOrderByIdDesc(pageable);
 		}
 		
-		List<Post> postList = pageList.getContent();
+		List<ExtendedPost> postList = pageList.getContent();
 		
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("pages", pageList);
@@ -69,7 +74,7 @@ public class SnsController {
 		
 		Post post = new Post(userId, message);
 		
-		snsRepository.save(post);
+		postRepository.save(post);
 		
 		return "redirect:/sns";
 	}
@@ -79,7 +84,7 @@ public class SnsController {
 	public String delete(@PathVariable("id") Integer id, 
 			Model model) {
 
-		snsRepository.deleteById(id);
+		postRepository.deleteById(id);
 		return "redirect:/sns";
 	}
 	
@@ -91,15 +96,15 @@ public class SnsController {
 			Pageable pageable,
 			Model model) {
 		
-		Page<Post> pageList = null;
+		Page<ExtendedPost> pageList = null;
 		
 		if (keyword.length() > 0) {
-			 pageList = snsRepository.findByUserIdAndMessageContainingOrderByIdDesc(id, keyword, pageable);
+			 pageList = extendedPostRepository.findExtendedPostDataByUserIdAndMessageContainingOrderByIdDesc(id, keyword, pageable);
 		} else {
-			pageList = snsRepository. findByUserIdOrderByIdDesc(id, pageable);
+			pageList = extendedPostRepository. findExtendedPostDataByUserIdOrderByIdDesc(id, pageable);
 		}
 		
-		List<Post> postList = pageList.getContent();
+		List<ExtendedPost> postList = pageList.getContent();
 		
 		model.addAttribute("keyword",keyword);
 		model.addAttribute("pages", pageList);

@@ -188,7 +188,12 @@ hr{
 
 /* 文字数制限(0になったら赤になる) */
 #remaining-characters.max {
-  color: #dd3535;
+  	color: #dd3535;
+}
+
+/* パスワードの目のやつ */
+.loginPassword {
+	margin-left: 24px;
 }
 
 

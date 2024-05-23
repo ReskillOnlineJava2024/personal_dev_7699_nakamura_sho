@@ -19,9 +19,10 @@ public class Post {
 	private Integer userId;
 	
 	private String message;
+	
 
 	public Post() {
-		super();
+		
 	}
 
 	public Post(Integer userId, String message) {

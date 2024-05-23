@@ -21,7 +21,7 @@
 			<table>
 				<tr>
 					<td>
-						<textarea class="sns" th:text="${post.id} + '     userID : ' + ${post.userId} +'&NewLine;' + '&NewLine;' + ${post.message}" readonly></textarea>
+						<textarea class="sns" th:text="${post.id} + '     アカウント名 : ' + ${post.name} +'&NewLine;' + '&NewLine;' + ${post.message}" readonly></textarea>
 						<form th:if="${post.userId}==${@account.id}" th:action="@{/sns/{postId}/delete(postId=${post.id})}"  method="post" onSubmit="return check()">  
 						    <input class="icon" type="submit" value="">
 						</form>
@@ -33,6 +33,6 @@
 		<a th:replace="page"></a>
 	</main>
 	
-	<script th:src="@{/js/deleteConfirm.js}"></script>
+	<script th:src="@{/js/postJsProcessing.js}"></script>
 </body>
 </html>

@@ -32,13 +32,13 @@ public class CheckLoginAspect {
 	}
 
 	// 各Controllerで未ログインの場合はログインページにリダイレクト
-	@Around("execution(* com.example.demo.controller.SnsController.*(..)) || execution(* com.example.demo.controller.UserController.user*(..))")
+	@Around("execution(* com.example.demo.controller.PostController.*(..)) || execution(* com.example.demo.controller.UserController.user*(..))")
 	public Object checkLogin(ProceedingJoinPoint jp) throws Throwable {
 		if (account == null || account.getName() == null ||
 				account.getName().length() == 0) {
 			System.err.println("ログインしていません!");
-			// "/"にリダイレクトさせる
-			return "redirect:/login";
+			
+			return "redirect:/login?error=notLoggedIn";
 		}
 		// Controller内のメソッドの実行
 		return jp.proceed();

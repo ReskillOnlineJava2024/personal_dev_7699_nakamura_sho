@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 <title>ログイン</title>
 </head>
 <body>
@@ -14,15 +15,16 @@
 		<h2>ログイン</h2>
 		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
 		<form action="/login" method="post" onSubmit="return validate()">
-			<input type="email" id="email" name="email" placeholder="メールアドレス"> <br>
+			<input type="email" id="email" name="email" placeholder="メールアドレス"><br>
 			<br>
-		    <input type="text" id="password" name="password" placeholder="パスワード"> <br>
+			<input type="password" id="password" class="loginPassword" name="password" placeholder="パスワード">
+	    	<span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span><br>
 		    <br>
 		<button>ログイン</button>
 		</form>
 		<br>
 		<a href="/user/new">ユーザー新規作成</a>
 	</main>
-	<script th:src="@{/js/loginCheck.js}"></script>
+	<script th:src="@{/js/userJsProcessing.js}"></script>
 </body>
 </html>

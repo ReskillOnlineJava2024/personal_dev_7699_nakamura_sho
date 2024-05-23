@@ -31,8 +31,14 @@ public class UserController {
 	
 	//ログイン画面表示
 	@GetMapping({"/login", "/logout"})
-	public String index() {
+	public String index(
+			@RequestParam(name = "error", defaultValue = "") String error,
+			Model model) {
 		session.invalidate();
+		// エラーパラメータのチェック
+		if (error.equals("notLoggedIn")) {
+			model.addAttribute("errorMessage", "セッションが切れました。再度ログインしてください。");
+		}
 		return "login";
 	}
 	
