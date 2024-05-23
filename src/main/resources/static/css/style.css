@@ -39,7 +39,8 @@ main {
 	background-color: rgb(192, 192, 192);
 	min-height: 50px;
 	padding: 20px;
-	min-height: 100vh; /* 画面の高さいっぱいに表示 */
+	min-height: 100vh;
+	overflow: auto; /* テキストエリアが見切れないようにする */
 }
 
 /* 表線 */
@@ -117,16 +118,15 @@ button:hover {
 }
 
 
-/*　sns.htmlのテキストエリアの大きさ */
-.sns{
-    width: 95%;
+/* sns.htmlのテキストエリアの大きさ */
+.sns {
+    width: 95%; /* 画面幅に合わせる */
     height: 100px;
-    /* 枠線を消す */
     border: none;
-    /* 右下の//(サイズ変更機能)を消す */
     resize: none;
     font-size: 15px;
     pointer-events: none;
+    overflow: auto; /* テキストが収まりきらない場合にスクロールバーを表示 */
 }
 
 /* textareaの大きさなど */
@@ -196,4 +196,9 @@ hr{
 	margin-left: 24px;
 }
 
+
+#entered-characters {
+	width: 95%;
+    height: 300px;
+}
 

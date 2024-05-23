@@ -10,6 +10,9 @@
 	
 	<main>
 		<h2>アカウント情報の変更</h2>
+		<div class="btn btn2">
+		    <a th:href="'/user/' + ${@account.id} + '/userInfo'">戻る</a>
+		</div>
 		<span th:if="${errorMessage}" th:text="${errorMessage}" style="color: red"></span>
 		<form th:action="@{/user/{userId}/edit(userId=${user.id})}" method="post" onsubmit="return updateValidate()">
 			<a th:each="user:${user}">
