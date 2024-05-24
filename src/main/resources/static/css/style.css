@@ -191,14 +191,14 @@ hr{
   	color: #dd3535;
 }
 
-/* パスワードの目のやつ */
-.loginPassword {
-	margin-left: 24px;
-}
-
 
 #entered-characters {
 	width: 95%;
     height: 300px;
 }
 
+
+/* パスワードの目のやつ */
+.loginPassword {
+	margin-left: 24px;
+}
