@@ -82,9 +82,15 @@ public class PostController {
 	// 削除処理
 	@PostMapping("/sns/{id}/delete")
 	public String delete(@PathVariable("id") Integer id, 
+			@RequestParam(name = "userId", defaultValue="") Integer userId,
 			Model model) {
 
 		postRepository.deleteById(id);
+		
+		if ( userId != null ) {
+			return "redirect:/sns/"+userId+"/myPostList";
+		}
+		
 		return "redirect:/sns";
 	}
 	

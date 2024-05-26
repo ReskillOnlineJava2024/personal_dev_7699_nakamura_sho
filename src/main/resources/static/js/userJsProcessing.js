@@ -10,7 +10,8 @@ function accountValidate() {
     var passwordPattern = /^(?=.*\d)(?=.*[a-z]).{8,16}$/;
     
     
-    if (name === "" || email === "" || password === "" || passwordConfirm === "") {
+    if (name === "" || !name.match(/\S/g) || email === "" || !email.match(/\S/g) || 
+    	password === "" || !password.match(/\S/g) || passwordConfirm === "" || !passwordConfirm.match(/\S/g)) {
         alert("未入力の項目があります");
         return false;
     }
@@ -47,7 +48,7 @@ function validate() {
     var password = document.getElementById("password").value;
     var email = document.getElementById("email").value;
     
-    if (email === "" || password === "") {
+    if (email === "" || !email.match(/\S/g) || password === "" || !password.match(/\S/g)) {
         alert("未入力の項目があります");
         return false;
     }
@@ -64,7 +65,8 @@ function updateValidate() {
     var passwordPattern = /^(?=.*\d)(?=.*[a-z]).{8,16}$/;
     
     
-    if (name === "" || email === "" || password === "" || passwordConfirm === "") {
+    if (name === "" || !name.match(/\S/g) || email === "" || !email.match(/\S/g) || 
+    	password === "" || !password.match(/\S/g) || passwordConfirm === "" || !passwordConfirm.match(/\S/g)) {
         alert("未入力の項目があります");
         return false;
     }
