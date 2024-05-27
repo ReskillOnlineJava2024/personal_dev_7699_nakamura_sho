@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>アカウント更新</title>
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
 	<header th:replace="header"></header>
@@ -20,9 +21,10 @@
 				<br>
 				<input type="email" id="email" name="email" placeholder="新しいメールアドレス" th:value="${user.email}"> <br>
 				<br>
-				<input type="text" id="password" name="password" placeholder="新しいパスワード(英数字8～16文字以内)"> <br>
+				<input type="password" id="password" class="loginPassword" name="password" placeholder="パスワード(英数字8～16文字以内)">
+				<span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span><br>
 				<br>
-				<input type="text" id="passwordConfirm" name="password_confirm" placeholder="新しいパスワード(確認)"> <br>
+				<input type="password" id="passwordConfirm" name="password_confirm" placeholder="新しいパスワード(確認)"> <br>
 				<br>
 			</a>
 			<button>変更</button>

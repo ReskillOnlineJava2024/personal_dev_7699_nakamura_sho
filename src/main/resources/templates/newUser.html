@@ -19,9 +19,10 @@
 			<br>
 			<input type="email" id="email" name="email" placeholder="メールアドレス" th:value="${email}"> <br>
 			<br>
-			<input type="text" id="password" name="password" placeholder="パスワード(英数字8～16文字以内)"><br>
+			<input type="password" id="password" class="loginPassword" name="password" placeholder="パスワード(英数字8～16文字以内)">
+			<span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span><br>
 			<br>
-			<input type="text" id="passwordConfirm" name="password_confirm" placeholder="パスワード(確認)"><br>
+			<input type="password" id="passwordConfirm" name="password_confirm" placeholder="パスワード(確認)"><br>
 			<br>
 			<button>新規登録</button>
 		</form>
